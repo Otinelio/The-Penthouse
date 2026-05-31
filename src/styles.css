@@ -1,0 +1,154 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-obsidian: #0A0A0F;
+  --color-gold: #C9A84C;
+  --color-copper: #A0614A;
+  --color-marble: #F0EDE6;
+  --color-glass: #1C1C26;
+  --color-slate: #3A3A4A;
+
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Jost', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+:root {
+  --radius: 0.25rem;
+  --background: #0A0A0F;
+  --foreground: #F0EDE6;
+  --card: #1C1C26;
+  --card-foreground: #F0EDE6;
+  --popover: #1C1C26;
+  --popover-foreground: #F0EDE6;
+  --primary: #C9A84C;
+  --primary-foreground: #0A0A0F;
+  --secondary: #1C1C26;
+  --secondary-foreground: #F0EDE6;
+  --muted: #1C1C26;
+  --muted-foreground: #8a8a96;
+  --accent: #A0614A;
+  --accent-foreground: #F0EDE6;
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: #F0EDE6;
+  --border: #3A3A4A;
+  --input: #1C1C26;
+  --ring: #C9A84C;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html, body {
+    background-color: var(--color-obsidian);
+    color: var(--color-marble);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-obsidian);
+  }
+}
+
+@layer utilities {
+  .font-serif { font-family: var(--font-serif); }
+  .font-body { font-family: var(--font-body); }
+
+  .label-eyebrow {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: var(--color-gold);
+  }
+
+  .glass {
+    background: rgba(28, 28, 38, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .gold-border { border: 1px solid var(--color-gold); }
+  .text-gold { color: var(--color-gold); }
+  .text-copper { color: var(--color-copper); }
+  .text-marble { color: var(--color-marble); }
+  .bg-obsidian { background-color: var(--color-obsidian); }
+  .bg-glass { background-color: var(--color-glass); }
+  .bg-gold { background-color: var(--color-gold); }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3 font-sans uppercase tracking-[0.2em] text-xs transition-all duration-300;
+    background: var(--color-gold);
+    color: var(--color-obsidian);
+    border: 1px solid var(--color-gold);
+  }
+  .btn-gold:hover {
+    background: transparent;
+    color: var(--color-gold);
+  }
+  .btn-ghost-gold {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3 font-sans uppercase tracking-[0.2em] text-xs transition-all duration-300;
+    background: transparent;
+    color: var(--color-gold);
+    border: 1px solid var(--color-gold);
+  }
+  .btn-ghost-gold:hover {
+    background: var(--color-gold);
+    color: var(--color-obsidian);
+  }
+
+  .field {
+    @apply w-full bg-transparent border-b px-0 py-3 text-marble outline-none transition-colors font-body;
+    border-color: var(--color-slate);
+  }
+  .field:focus { border-color: var(--color-gold); }
+
+  @keyframes floatDust {
+    0%, 100% { transform: translate(0,0); opacity: 0.2; }
+    50% { transform: translate(10px,-30px); opacity: 0.5; }
+  }
+  .gold-dust {
+    position: absolute;
+    width: 3px; height: 3px;
+    background: var(--color-gold);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatDust 8s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { transform: translateY(0); opacity: 0.3; }
+    50% { transform: translateY(8px); opacity: 1; }
+  }
+  .scroll-dot { animation: scrollPulse 2s ease-in-out infinite; }
+}
