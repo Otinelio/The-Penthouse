@@ -2,6 +2,7 @@ import { Link, useRouterState } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import logo from '../../../Assets/images/logo.png';
 
 const NAV = [
   { to: '/experience', label: 'Experience' },
@@ -36,8 +37,8 @@ export function Navbar() {
         }}
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-12 h-20 flex items-center justify-between">
-          <Link to="/" className="font-serif text-gold text-xl md:text-2xl" style={{ letterSpacing: '0.3em' }}>
-            THE PENTHOUSE
+          <Link to="/" className="flex items-center">
+            <img src={logo} alt="The Penthouse logo" className="h-16 md:h-20 w-auto" />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-10">
